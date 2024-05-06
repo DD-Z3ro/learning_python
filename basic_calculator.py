@@ -50,10 +50,15 @@ def divide():
     First = input("First: ")
     # sets the variable Second of input provided by user
     Second = input("Second: ")
-    # Sets the variable answer to take the number(s) from First and subtracts it by the number(s) in Second, providing the solution when answer is called.
-    answer = int(First) / int(Second)
-    # Prints the string "answer: " whilst also converting the answer from an integer to a string and shows the solution.
-    print("Answer: " + str(answer))
+
+    # Checks to see if both inputs from the user are zero and prints the message below.
+    if First and Second == "0":
+        print("woah there, we cant divide by zero, thats impossible!")
+    else:
+        # Sets the variable answer to take the number(s) from First and subtracts it by the number(s) in Second, providing the solution when answer is called.
+        answer = int(First) / int(Second)
+        # Prints the string "answer: " whilst also converting the answer from an integer to a string and shows the solution.
+        print("Answer: " + str(answer))
 
     return
 
