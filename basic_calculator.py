@@ -8,9 +8,9 @@ Created on Sun May  5 22:28:23 2024
 
 def add():
     # sets the variable First from the input of the user.
-    First = (input("First: "))
+    First = input("First: ")
     # sets the variable Second from the input of the user.
-    Second = (input("Second : "))
+    Second = input("Second : ")
     # Sets the variable answer to take the number(s) from First and adds it to the number(s) in Second, providing the solution when answer is called.
     answer = int(First) + int(Second)
     # Prints the string "answer: " whilst also converting the answer from an integer to a string and shows the solution.
@@ -21,9 +21,9 @@ def add():
 
 def subtract():
     # Sets the variable from the input of the user.
-    First = (input("First: "))
+    First = input("First: ")
     # Sets the variable from input of the user.
-    Second = (input("Second: "))
+    Second = input("Second: ")
     # Sets the variable answer to take the number(s) from First and subtracts it by the number(s) in Second, providing the solution when answer is called.
     answer = int(First) - int(Second)
     # Prints the string "answer: " whilst also converting the answer from an integer to a string and shows the solution.
@@ -34,9 +34,9 @@ def subtract():
 
 def multiply():
     # Sets the variable First from input of the user.
-    First = (input("First: "))
+    First = input("First: ")
     # Sets the variable Second from input of the user.
-    Second = (input("Second: "))
+    Second = input("Second: ")
     # Sets the variable answer to take the number(s) from First and subtracts it by the number(s) in Second, providing the solution when answer is called.
     answer = int(First) * int(Second)
     # Prints the string "answer: " whilst also converting the answer from an integer to a string and shows the solution.
@@ -47,12 +47,12 @@ def multiply():
 
 def divide():
     # sets the variable First of input provided by user
-    First = (input("First: "))
+    First = input("First: ")
     # sets the variable Second of input provided by user
     Second = input("Second: ")
 
     # Checks to see if both inputs from the user are zero and prints the message below.
-    if First and Second == "0":
+    if Second == "0":
         print("woah there, we cant divide by zero, thats impossible!")
     else:
         # Sets the variable answer to take the number(s) from First and subtracts it by the number(s) in Second, providing the solution when answer is called.
