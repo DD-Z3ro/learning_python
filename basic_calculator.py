@@ -37,7 +37,7 @@ def multiply():
     First = input("First: ")
     # Sets the variable Second from input of the user.
     Second = input("Second: ")
-    # Sets the variable answer by converting their strings into integers and take the number(s) from First and subtracts it by the number(s) in Second, providing the solution when answer is called.
+    # Sets the variable answer by converting their strings into integers and take the number(s) from First and mulitplies it by the number(s) in Second, providing the solution when answer is called.
     answer = int(First) * int(Second)
     # Prints the string "answer: " whilst also converting the answer from an integer to a string and shows the solution.
     print("Answer: " + str(answer))
@@ -55,7 +55,7 @@ def divide():
     if Second == "0":
         print("woah there, we cant divide by zero, thats impossible!")
     else:
-        # Sets the variable answer by converting their strings into integers and take the number(s) from First and subtract it by the number(s) in Second, providing the solution when answer is called.
+        # Sets the variable answer by converting their strings into integers and take the number(s) from First and divides it by the number(s) in Second, providing the solution when answer is called.
         answer = int(First) / int(Second)
         # Prints the string "answer: " whilst also converting the answer from an integer to a string and shows the solution.
         print("Answer: " + str(answer))
