@@ -51,7 +51,7 @@ def divide():
     # sets the variable Second of input provided by user
     Second = input("Second: ")
 
-    # Checks to see if both inputs from the user are zero and prints the message below.
+    # Checks to see if Second variable from the user is zero and prints the message below.
     if Second == "0":
         print("woah there, we cant divide by zero, thats impossible!")
     else:
