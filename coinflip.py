@@ -33,7 +33,7 @@ elif saying == 5:
 choice = input()
 
 print('Im flipping now, the best of luck to you...')
-time.sleep(3)  # this adds semi-realism as if there is a coin being flipped.
+time.sleep(3)  # this adds suspense if there was a coin is being flipped.
 
 num = random.randint(1, 2)
 
