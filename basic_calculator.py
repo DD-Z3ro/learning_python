@@ -21,9 +21,9 @@ def add():
 
 def subtract():
     # Sets the variable from the input of the user.
-    First = input("First: ")
+    First = (input("First: "))
     # Sets the variable from input of the user.
-    Second = input("Second: ")
+    Second = (input("Second: "))
     # Sets the variable answer to take the number(s) from First and subtracts it by the number(s) in Second, providing the solution when answer is called.
     answer = int(First) - int(Second)
     # Prints the string "answer: " whilst also converting the answer from an integer to a string and shows the solution.
@@ -34,9 +34,9 @@ def subtract():
 
 def multiply():
     # Sets the variable First from input of the user.
-    First = input("First: ")
+    First = (input("First: "))
     # Sets the variable Second from input of the user.
-    Second = input("Second: ")
+    Second = (input("Second: "))
     # Sets the variable answer to take the number(s) from First and subtracts it by the number(s) in Second, providing the solution when answer is called.
     answer = int(First) * int(Second)
     # Prints the string "answer: " whilst also converting the answer from an integer to a string and shows the solution.
@@ -47,7 +47,7 @@ def multiply():
 
 def divide():
     # sets the variable First of input provided by user
-    First = input("First: ")
+    First = (input("First: "))
     # sets the variable Second of input provided by user
     Second = input("Second: ")
 
@@ -66,22 +66,21 @@ def divide():
 if __name__ == "__main__":
 
     print("welcome to the calculator.")
-    print("""
-          1.) Add
-          2.) Subtract
-          3.) Multiply
-          4.) Divide""")
+    print("1.) Add")
+    print("2.) Subtract")
+    print("3.) Multiply")
+    print("4.) Divide")
 
     choice = input("Type the name of the function you wish to perform: ")
     # if users input provided from the variable choice is Add it will start the function for add()
     if choice == "Add":
         add()
-    # if the input provided from the variable choice is Subtract it will start the function for subtract()
-    elif input() == "Subtract":
+        # if the input provided from the variable choice is Subtract it will start the function for subtract()
+    elif choice == "Subtract":
         subtract()
     # if the input provided from the variable choice is Multiply it will start the function for multiply()
-    elif input() == "Multiply":
+    elif choice == "Multiply":
         multiply()
     # if the input provided fromthe variable  choice is Divide it will start the function for divide()
-    elif input() == "Divide":
+    elif choice == "Divide":
         divide()
