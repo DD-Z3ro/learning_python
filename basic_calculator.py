@@ -54,6 +54,7 @@ def divide():
     # Checks to see if Second variable from the user is zero and prints the message below.
     if Second == "0":
         print("woah there, we cant divide by zero, thats impossible!")
+        divide()
     else:
         # Sets the variable answer by converting their strings into integers and take the number(s) from First and divides it by the number(s) in Second, providing the solution when answer is called.
         answer = int(First) / int(Second)
