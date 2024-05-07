@@ -10,11 +10,23 @@ Created on Tue May  7 00:42:14 2024
 
 def view_list():
 
-    # calls for the variable shoppinglist and prints its list for review
-    print('\nThis is the Shopping list so far')
-    # calls the variable shoppinglist and prints the list of shopping items
-    print(shoppinglist, '\n')
-    # calls the main() function and sends user back to the main menu
+    # this will check to see if the variable shoppinglist is empty
+    if shoppinglist == []:
+        print("There appears to be nothing on your shopping list!")
+        print("Would you like to add some items to the list now?")
+        choice = input("enter yes or no: ")
+        # calls the choice variable and checks if yes was typed, taking user to append_list() function
+        if choice == "yes":
+            append_list()
+        # calls the choice variable and checks if no was typed, will print message and continue forward
+        elif choice == "no":
+            print("Understood, continuing on..")
+
+    else:
+        # calls for the variable shoppinglist and prints its list for review
+        print('\nThis is the Shopping list so far: \n')
+        print(shoppinglist, '\n')
+        # calls the main() function and sends user back to the main menu
     return main()
 
 
