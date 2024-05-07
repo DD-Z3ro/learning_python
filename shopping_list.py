@@ -49,11 +49,15 @@ def append_list():
 # this is the remove_from_list function
 
 def remove_from_list():
-
+    # checks the shoppinglist variable to see if it is empty
+    if shoppinglist == []:
+        # if the list is empty it will print the following message
+        print("\nThe shopping list is empty, returning to menu.\n")
+        return main()
     # calls for the variable shoppinglist and prints its list for review
     print(shoppinglist, "\n")
     # sets a variable for item takes the users input that has to be removed from the list
-    item = input("What would you like to remove from the list?")
+    item = input("What would you like to remove from the list? ")
     # calls the shopping list and removes the users inputted item from the list
     shoppinglist.remove(item)
     # calls for the shopping list to show the user the new shopping list
