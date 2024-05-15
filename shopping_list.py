@@ -10,17 +10,19 @@ class shoppinglist:
     def __init__(self):
         self.items = []
 
-    # This is the view_list function
+    # This function views the list currently, if theres nothing in it will prompt user
     def view_list(self):
         if len(self.items) == 0:
             print("\nYour shopping list is empty")
 
         for item in self.items:
             print(item)
+    # this function appends the list
 
     def append(self, item):
         self.items.append(item)
 
+    # this function removes an item from the list, not working currently.
     def remove_from_list(self, name):
         for item in self.items:
             if item.getname() == name:
@@ -75,6 +77,8 @@ class main_menu:
             # append_list()
         elif choice == "3":
             # will call for the function remove_from_list()
+            print("Which item would you like to remove from the list?")
+            item = input()
             shoppinglist.remove_from_list()
 
         elif choice == "4":
