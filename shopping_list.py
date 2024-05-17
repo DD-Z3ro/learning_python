@@ -24,8 +24,9 @@ class shoppinglist:
 
     # this function removes an item from the list, not working currently.
     def remove_from_list(self):
+        name = input()
         for item in self.items:
-            if item.getname() == input():
+            if item.getname() == name:
                 self.item = item
                 break
         self.items.remove(self.item)
@@ -77,7 +78,7 @@ class main_menu:
             # append_list()
         elif choice == "3":
             # will call for the function remove_from_list()
-            print("Which item would you like to remove from the list?")
+            print("Name the item you wish to remove from the list")
             shoppinglist.remove_from_list()
 
         elif choice == "4":
