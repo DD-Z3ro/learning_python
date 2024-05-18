@@ -30,6 +30,22 @@ class shoppinglist:
                 self.item = item
                 break
         self.items.remove(self.item)
+    # this function appends the item on the list
+
+    def increase_amount(self):
+        name = input()
+        for item in self.items:
+            if item.getname() == name:
+                self.item = item
+                # print('The current amount for' + str(self.item) + 'is' + str(self.amount))
+                # amount = input('how much would you like to add it? ')
+                # new_amount = (self.amount) + int(amount)
+                # self.amount.append(item)
+
+        pass
+
+    def decrease_amount(self):
+        pass
 
 
 class List_item:
@@ -43,9 +59,11 @@ class List_item:
     def getname(self):
         return self.name
 
-    def input(self):
+    def input_item(self):  # function for inputting item
         print("What item would you like to add to the list? ")
         self.name = input()
+
+    def input_amount(self):  # function for inputting amount
         print(".. and how many do you want to get? ")
         self.amount = int(input())
 
@@ -58,7 +76,8 @@ class main_menu:
         print('1.View List')
         print('2.Append List')
         print('3.Remove from list')
-        print('4.List length')
+        print('4.Add to items amount')
+        print('5.Reduce an items amount')
         # sets the variable choice pending on the number input from the user
         choice = input("Type the number of your choice: ")
 
@@ -71,8 +90,9 @@ class main_menu:
         elif choice == "2":
             # will call for the function append_list()
             item = List_item()
-            item.input()
-            print(item.name + " has been added to the list")
+            item.input_item()
+            item.input_amount()
+            print(item.name + " has been added with an amount of" + str(item.amount))
             shoppinglist.append(item)
             print(shoppinglist.view_list())
             # append_list()
@@ -82,14 +102,15 @@ class main_menu:
             shoppinglist.remove_from_list()
 
         elif choice == "4":
-            # will call for the function list_length()
-            print("\noption unavailable at the moment")
-            main_menu.main()
-            # list_length()
+            # will call for the increase_amount function()
+            print('enter the item you wish to change the amount of: ')
+            shoppinglist.increase_amount()
+
+        elif choice == "5":
+            shoppinglist.decrease_amount()
+
         else:
             print("\nInvalid option, try another selection")
-            main_menu.main()
-            # return main()
 
 
 if __name__ == "__main__":
