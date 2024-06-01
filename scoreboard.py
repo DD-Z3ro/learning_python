@@ -12,9 +12,7 @@ class scoreboard:
         }
 
     def view_score(self):
-        print("\n")
-        print("Here are the scores currently: ")
-        print("\n")
+        print("\nHere are the scores currently: ")
         for name in self.scores:
             # prints the scoreboard in rows
             print(name + " : " + str(self.scores[name]))
@@ -83,22 +81,22 @@ class main():
             # launches the view_score function
             scoreboard.view_score()
 
-        if choice == "2":
+        elif choice == "2":
             # launches new entry function then carries the data from new_entry into append
             add = inputs()
             add.new_entry()
             scoreboard.append(add)
 
-        if choice == "3":
+        elif choice == "3":
             # launches the adjust_player_score function
             scoreboard.adjust_player_score()
 
-        if choice == "4":
+        elif choice == "4":
             # launches the leader function within scoreboard
             scoreboard.leader()
         else:
             # if user enters a number greater than 4 will inform the user to make a selection between 1 to 4
-            print("invalid input, enter a number from 1 to 4 to make a selection")
+            print("\ninvalid input, enter a number from 1 to 4 to make a selection")
 
 
 if __name__ == "__main__":
