@@ -97,7 +97,7 @@ class main():
             # launches the leader function within scoreboard
             scoreboard.leader()
         else:
-            # if user enters a number greater than 4 will inform the user to make a slection between 1 to 4
+            # if user enters a number greater than 4 will inform the user to make a selection between 1 to 4
             print("invalid input, enter a number from 1 to 4 to make a selection")
 
 
