@@ -79,7 +79,7 @@ class main:
             todolist.remove(task)
 
         if choice == "4":
-            print(todolist)  # Shows user the current to do list to help make a choice on which task to mark as completed
+            todolist.view()  # Shows user the current to do list to help make a choice on which task to mark as completed
             print("Which task would you like to mark as completed?")
             task = input("Task: ")
             todolist.completedlist(task)  # Adds the task to the completed list
