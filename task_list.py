@@ -38,12 +38,45 @@ class todolist:
     def viewcompletedlist(self):
         # this function will view the completed tasks list
         print("Here is the completed tasks list: ")
-        print(self.completed)
+        for t, task in enumerate(self.completed, start=1):
+            print(f"task {t}: {task} -Completed")
+        # print(self.completed)
 
     def clearcompletedlist(self):
         # this function will clear the list entirely of all tasks within self.completed
         self.completed.clear()
         print("The completed list is now cleared.")
+
+    def loadfile(self):
+
+        file = open("tasklist.txt", "r")
+        tasks = file.read().splitlines()
+        # reads the file list and splits the strings into a list
+        for task in tasks:
+            # adds each task from the split tasks into the tasklist
+            self.tasklist.append(task)
+        file.close()
+
+        file = open("completed.txt", "r")
+        tasks = file.read().splitlines()
+        for task in tasks:
+            self.completed.append(task)
+        file.close()
+        print("Tasklist and completed list are now loaded!")
+
+    def savefile(self):
+
+        file = open("tasklist.txt", "w")
+        for task in self.tasklist:
+            # takes all tasks in self.tasklist and writes each of them on a new line them to tasklist.txt
+            file.write(task + '\n')
+        file.close()
+
+        file = open("completed.txt", "w")
+        for task in self.completed:
+            # takes the list self.completed and writes each of them on a new line to completed.txt
+            file.write(task + '\n')
+        file.close()
 
 
 class main:
@@ -57,6 +90,7 @@ class main:
         print("4. Mark task as completed. ")
         print("5. View completed tasks list")
         print("6. Empty completed tasks list")
+        print("7. Save/load Tasks & completed list")
 
         choice = input("choose a number: ")
         if choice == "1":
@@ -80,7 +114,7 @@ class main:
 
         if choice == "4":
             todolist.view()  # Shows user the current to do list to help make a choice on which task to mark as completed
-            print("Which task would you like to mark as completed?")
+            print("Type the task you would like to mark as completed?")
             task = input("Task: ")
             todolist.completedlist(task)  # Adds the task to the completed list
             todolist.remove(task)  # Then removes that specific task from the to-do list
@@ -93,6 +127,18 @@ class main:
         if choice == "6":
             # this will call for the clearcompletedlist function
             todolist.clearcompletedlist()
+        if choice == "7":
+            print("this option is not available at the moment.")
+            print("What would you like to do?")
+            print("1.Load file")
+            print("2.Save file")
+            scndchoice = input("Choice: ")
+            if scndchoice == "1":
+                todolist.loadfile()
+
+            if scndchoice == "2":
+                todolist.savefile()
+                print("Tasklist and completed list are now saved")
 
 
 if __name__ == "__main__":
