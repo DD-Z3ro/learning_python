@@ -13,11 +13,11 @@ class todolist:
 
     def view(self):
         # # this function will view the to-do list
-
+        print("Here is the current Task List: ")
         # this will list each task as {t}, starting at 1 it will print each task until it reaches the end of the list
         # e.g. task {t} becomes task 1: task etc etc.
         for t, task in enumerate(self.tasklist, start=1):
-            print(f"task {t}: {task}")
+            print("Task" + str(t) + ":" + task)
 
     def add(self, task):
         # This function will add tasks to the to-do list
@@ -38,9 +38,8 @@ class todolist:
     def viewcompletedlist(self):
         # this function will view the completed tasks list
         print("Here is the completed tasks list: ")
-        for t, task in enumerate(self.completed, start=1):
-            print(f"task {t}: {task} -Completed")
-        # print(self.completed)
+        for t, completed_task in enumerate(self.completed, start=1):
+            print("task" + str(t) + ":" + completed_task + "-Completed")
 
     def clearcompletedlist(self):
         # this function will clear the list entirely of all tasks within self.completed
@@ -68,7 +67,7 @@ class todolist:
 
         file = open("tasklist.txt", "w")
         for task in self.tasklist:
-            # takes all tasks in self.tasklist and writes each of them on a new line them to tasklist.txt
+            # takes all tasks in self.tasklist and writes each of them on a new line to tasklist.txt
             file.write(task + '\n')
         file.close()
 
@@ -79,8 +78,8 @@ class todolist:
         file.close()
 
 
-class main:
-    def main_menu():
+class main_menu:
+    def main():
         print("\n")
         print("Welcome to your to-do list!")
         print("Here are the options for you currently: ")
@@ -95,7 +94,6 @@ class main:
         choice = input("choose a number: ")
         if choice == "1":
             # calls for the view function of the to-do list
-            print("Here is the current Task List: ")
             todolist.view()
 
         if choice == "2":
@@ -142,7 +140,6 @@ class main:
 
 
 if __name__ == "__main__":
-    # upon launching will immediately load up the main menu
     todolist = todolist()
     while True:
-        main.main_menu()
+        main_menu.main()
