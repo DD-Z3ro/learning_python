@@ -40,6 +40,7 @@ class todolist:
         oldtask = self.tasklist.pop(task)
         # this function will add the string input from the task variable and add it to the completed task list
         self.completed.append(oldtask)
+        print("{" + oldtask + "} -Task has been marked and moved to the completed list.")
 
     def viewcompletedlist(self):
         # this function will view the completed tasks list
@@ -53,7 +54,8 @@ class todolist:
     def clearcompletedlist(self):
         # this function will clear the list entirely of all tasks within self.completed
         try:
-            self.completed.pop()
+            while self.completed:
+                self.completed.pop()
             print("The completed list is now cleared.")
         except:
             print("Error occured, returning to menu")
@@ -113,22 +115,27 @@ class main_menu:
             # takes the input from the user and sets the string into the variable task and calls for the add function with the variable
             print("What is the task you'd like to add?")
             task = input("task: ")
-            print("\n")
-            todolist.add(task)
+            if task == "":  # incase of no input, return user to menu
+                print("Invalid input, returning to menu")
+            else:
+                print("\n")
+                todolist.add(task)
 
         if choice == "3":
             # takes input from the user and sets the string into the variable task and calls the remove function with the variable
             todolist.view()
             print("which task would you like to remove?")
             task = int(input("Task: "))
-            todolist.remove(task)
+            if task == "":
+                print("Invalid input, returning to menu")
+            else:
+                todolist.remove(task)
 
         if choice == "4":
             todolist.view()  # Shows user the current to do list to help make a choice on which task to mark as completed
             print("Type the number of the task you would like to mark as completed")
             task = int(input("Task number: "))
             todolist.completedlist(task)  # Adds the task to the completed list
-            print("Task has been marked and moved to the completed list.")
 
         if choice == "5":
             # This will call for the viewcompletedlist function
