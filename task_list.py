@@ -10,6 +10,7 @@ import sys
 class todolist:
     def __init__(self):
         self.tasklist = []
+        self.in_progress = []
         self.completed = []
 
     def view(self):
@@ -27,20 +28,32 @@ class todolist:
         # This will add the string input from the task variable to the task list
         self.tasklist.append(task)
 
+    def set_in_progress(self, task):
+        task = int(task) - 1
+        in_progress_task = self.tasklist.pop(task)
+        self.in_progress.append(in_progress_task)
+        print(in_progress_task + " Has now been set to making progress on.")
+
     def remove(self, task):
         # this function will remove tasks to the to-do list
         task = int(task) - 1  # reduces the input so that it deletes the accurate task
         self.tasklist.pop(task)
         print("Task has been removed from the list.")
 
-    def completedlist(self, task):
-        # reduces the amount to find the precise item on the list
-        task = int(task) - 1
-        # stores and removes the task on the list within oldtask
-        oldtask = self.tasklist.pop(task)
-        # this function will add the string input from the task variable and add it to the completed task list
-        self.completed.append(oldtask)
-        print("{" + oldtask + "} -Task has been marked and moved to the completed list.")
+    def completedlist(self):
+        if not self.in_progress:
+            print("There is no progressed tasks to mark as completed, returning to main menu.")
+        else:
+            todolist.view_in_progress()  # Shows user the current to do list to help make a choice on which task to mark as completed
+            print("Type the number of the task you would like to mark as completed")
+            task = int(input("Task number: "))
+            # reduces the amount to find the precise item on the list
+            task = int(task) - 1
+            # stores and removes the task on the list within oldtask
+            oldtask = self.in_progress.pop(task)
+            # this function will add the string input from the task variable and add it to the completed task list
+            self.completed.append(oldtask)
+            print("{" + oldtask + "} -Task has been marked and moved to the completed list.")
 
     def viewcompletedlist(self):
         # this function will view the completed tasks list
@@ -70,6 +83,12 @@ class todolist:
             self.tasklist.append(task)
         file.close()
 
+        file = open("in_progress_list.txt", "r")
+        tasks = file.read().splitlines()
+        for task in tasks:
+            self.in_progress.append(task)
+        file.close()
+
         file = open("completed.txt", "r")
         tasks = file.read().splitlines()
         for task in tasks:
@@ -85,26 +104,41 @@ class todolist:
             file.write(task + '\n')
         file.close()
 
+        file = open("in_progress_list.txt", "w")
+        for task in self.in_progress:
+            file.write(task + '\n')
+        file.close()
+
         file = open("completed.txt", "w")
         for task in self.completed:
             # takes the list self.completed and writes each of them on a new line to completed.txt
             file.write(task + '\n')
         file.close()
 
+    def view_in_progress(self):
+        for t, task in enumerate(self.in_progress, start=1):
+            print("Task " + str(t) + " : " + task)
+        if not self.in_progress:
+            print("There is no tasks in progress currently.")
+            print("\n")
+
 
 class main_menu:
     def main():
         print("\n")
         print("Welcome to your to-do list!")
+        print("Current in progress tasks:")
+        todolist.view_in_progress()
         print("Here are the options for you currently: ")
         print("1. View To-Do List")
         print("2. Add task to To-Do List")
-        print("3. Remove task from To-Do List")
-        print("4. Mark task as completed. ")
-        print("5. View completed tasks list")
-        print("6. Empty completed tasks list")
-        print("7. Save/load Tasks & completed list")
-        print("8. Exit")
+        print("3. Set task to making progress")
+        print("4. Remove task from To-Do List")
+        print("5. Mark task as completed. ")
+        print("6. View completed tasks list")
+        print("7. Empty completed tasks list")
+        print("8. Save/load Tasks & completed list")
+        print("9. Exit")
 
         choice = input("choose a number: ")
         if choice == "1":
@@ -122,6 +156,12 @@ class main_menu:
                 todolist.add(task)
 
         if choice == "3":
+            todolist.view()
+            print("Type in the number of the task that you wish to work on")
+            task = input("Task number: ")
+            todolist.set_in_progress(task)
+
+        if choice == "4":
             # takes input from the user and sets the string into the variable task and calls the remove function with the variable
             todolist.view()
             print("which task would you like to remove?")
@@ -131,20 +171,18 @@ class main_menu:
             else:
                 todolist.remove(task)
 
-        if choice == "4":
-            todolist.view()  # Shows user the current to do list to help make a choice on which task to mark as completed
-            print("Type the number of the task you would like to mark as completed")
-            task = int(input("Task number: "))
-            todolist.completedlist(task)  # Adds the task to the completed list
-
         if choice == "5":
+            todolist.completedlist()  # Adds the task to the completed list
+
+        if choice == "6":
             # This will call for the viewcompletedlist function
             todolist.viewcompletedlist()
 
-        if choice == "6":
+        if choice == "7":
             # this will call for the clearcompletedlist function
             todolist.clearcompletedlist()
-        if choice == "7":
+
+        if choice == "8":
             print("What would you like to do?")
             print("1.Load file")
             print("2.Save file")
@@ -154,8 +192,9 @@ class main_menu:
 
             if scndchoice == "2":
                 todolist.savefile()
-                print("Tasklist and completed list are now saved")
-        if choice == "8":
+                print("Tasklist, in progress and completed lists are now saved")
+        if choice == "9":
+            print("Switching off, goodbye!")
             sys.exit(0)
 
 
@@ -165,7 +204,7 @@ if __name__ == "__main__":
         todolist.loadfile()
     except OSError:
         # will catch OSError when it fails to load the tasklist file
-        print('failed to load tasklist')
+        print('failed to load tasklist, in_progress or completed list')
 
     while True:
         main_menu.main()
