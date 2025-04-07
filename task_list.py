@@ -44,7 +44,7 @@ class todolist:
         if not self.in_progress:
             print("There is no progressed tasks to mark as completed, returning to main menu.")
         else:
-            todolist.view_in_progress()  # Shows user the current to do list to help make a choice on which task to mark as completed
+            todolist.view_in_progress()  # Shows user the in progress list to help make a choice on which task to mark as completed
             print("Type the number of the task you would like to mark as completed")
             task = int(input("Task number: "))
             # reduces the amount to find the precise item on the list
