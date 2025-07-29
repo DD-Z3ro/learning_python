@@ -46,7 +46,10 @@ class todolist:
         else:
             todolist.view_in_progress()  # Shows user the in progress list to help make a choice on which task to mark as completed
             print("Type the number of the task you would like to mark as completed")
-            task = int(input("Task number: "))
+            task = (input("Task number: "))
+            if not task:
+                print("No number enterred, returning to menu")
+                return
             # reduces the amount to find the precise item on the list
             task = int(task) - 1
             # stores and removes the task on the list within oldtask
@@ -122,11 +125,27 @@ class todolist:
             print("There is no tasks in progress currently.")
             print("\n")
 
+    def HowManyOnList(self):
+        # this will check the tasklists amount and report if there is alot
+        if len(self.tasklist) > 30:
+            report = len(self.tasklist)
+            return print("The Tasklist has " + str(report) + " tasks on the list, consider getting some tasks completed.")
+        if len(self.tasklist) > 20:
+            report = len(self.tasklist)
+            return print("There is " + str(report) + " tasks on the list, consider getting some tasks completed.")
+        if len(self.tasklist) > 10:
+            report = len(self.tasklist)
+            return print("There is a bunch of tasks on the Tasklist, " + str(report) + " on the list, consider getting some tasks completed.")
+
 
 class main_menu:
     def main():
         print("\n")
         print("Welcome to your to-do list!")
+        print("---------------------------")
+        print("")
+        todolist.HowManyOnList()
+        print("")
         print("Current in progress tasks:")
         todolist.view_in_progress()
         print("Here are the options for you currently: ")
@@ -141,6 +160,7 @@ class main_menu:
         print("9. Exit")
 
         choice = input("choose a number: ")
+
         if choice == "1":
             # calls for the view function of the to-do list
             todolist.view()
@@ -159,15 +179,19 @@ class main_menu:
             todolist.view()
             print("Type in the number of the task that you wish to work on")
             task = input("Task number: ")
+            if not task:
+                print('No task enterred, returning to menu')
+                return
             todolist.set_in_progress(task)
 
         if choice == "4":
             # takes input from the user and sets the string into the variable task and calls the remove function with the variable
             todolist.view()
             print("which task would you like to remove?")
-            task = int(input("Task: "))
-            if task == "":
+            task = input("Task: ")
+            if not task:
                 print("Invalid input, returning to menu")
+                return
             else:
                 todolist.remove(task)
 
